@@ -1,3 +1,5 @@
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fdiving-typescript%2Fwoowahan-typescript-with-react&count_bg=%236A3DC8&title_bg=%23C3BED3&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 # 우아한 타입스크립트 with 리액트 
 : 배달의민족 개발 사례로 살펴보는 우아한형제들의 타입스크립트와 리액트 활용
 
@@ -30,12 +32,15 @@
 
 
 <br>
+<br>
 
 ## Contributors
+
 <a href="https://github.com/diving-typescript/woowahan-typescript-with-react/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=diving-typescript/woowahan-typescript-with-react" />
 </a>
 
+<br>
 <br>
 
 ## 참고
