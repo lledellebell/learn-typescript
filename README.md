@@ -30,6 +30,70 @@
 |` `| 11주차 | 3월 18일  | 12장 타입스크립트 프로젝트 관리                               |
 |` `| 12주차 | 3월 25일  | 13장 타입스크립트와 객체 지향              |
 
+<br>
+<br>
+
+## Structure
+
+```bash
+.
+├── 1장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+│       └── UserName
+│           └── README.md
+├── 2장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 3장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 4장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 5장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 6장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 7장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 8장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 9장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 10장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 11장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 12장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── 13장
+│   ├── algorithms
+│   ├── example-code
+│   └── summary
+├── LICENSE
+└── README.md
+```
 
 <br>
 <br>
