@@ -239,7 +239,8 @@ def greet(name: str) -> str:
 
 <br>
 
-### 2-2-2. 구조적 타이핑(Structural Typing)
+### 2-2-2. [구조적 타이핑(Structural Typing)](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html#structural-type-system)
+
 
 1. **명목적 타입 시스템**:
    - 대부분의 언어에서 값이나 객체는 하나의 구체적인 타입을 가짐.
@@ -250,6 +251,17 @@ def greet(name: str) -> str:
    - 타입스크립트는 이름이 아닌 **구조**로 타입을 구분.
    - 객체의 속성과 구조가 동일하다면, 서로 다른 타입이라도 호환 가능.
    - 이를 **구조적 타이핑(Structural Typing)**이라 부름.
+
+
+```ts
+type User = {
+  name: string;
+  age: number;
+};
+
+const user: User = { name: "홍길동", age: 30, address: "서울" }; // ✅ OK 
+// 구조적 타이핑은 객체의 필드가 추가로 포함되어 있어도 문제없이 동작합니다.
+```
 
 
 ```ts
@@ -280,20 +292,20 @@ interface Box {
   height: number;
 }
 
-let rect: Rectangle = { width: 10, height: 20 };
-let box: Box = { width: 15, height: 25 };
-
-rect = box; // ✅ OK
-box = rect; // ✅ OK
-// `Rectangle`과 `Box`는 이름이 다르지만, 구조가 동일하므로 서로 할당이 가능.
-```
-
-```ts
 interface Circle {
   radius: number;
 }
 
+
+let rect: Rectangle = { width: 10, height: 20 };
+let box: Box = { width: 15, height: 25 };
+
 let circle: Circle = { radius: 10 };
+
+rect = box; // ✅ OK
+box = rect; // ✅ OK
+// `Rectangle`과 `Box`는 이름이 다르지만, 구조가 동일하므로 서로 할당이 가능.
+
 
 // rect = circle; // 🚨 Error: 구조가 다르므로 호환되지 않음
 // circle = rect; // 🚨 Error: 구조가 다르므로 호환되지 않음
@@ -353,8 +365,10 @@ subtract = add; // ✅ OK
     console.log(`Hello, ${pet.name}`);
   }
 
-  // ✅ OK: cat의 구조가 Pet의 구조를 포함하므로 함수 호출 가능
+
   greet(cat);
+  // ✅ OK: cat의 구조가 Pet의 구조를 포함하므로 함수 호출 가능
+  // ㄴ cat은 Pet 타입에 정의되지 않은 age 필드를 가지고 있지만, name 필드가 일치하기 때문에 타입체크를 통과합니다.
   ```
 
   ```ts
@@ -372,8 +386,9 @@ subtract = add; // ✅ OK
   let rect: Rectangle;
   let square: Square = { width: 10, height: 10, color: "blue" };
 
-  // ✅ OK: Square의 구조가 Rectangle의 구조를 포함하므로 호환 가능
   rect = square;
+  // ✅ OK: Square의 구조가 Rectangle의 구조를 포함하므로 호환 가능
+  // ㄴ 객체에 추가적인 필드가 있어도 무시되며, 필요한 필드만 일치하면 타입이 호환된다고 간주합니다.
 
   function calculateArea(shape: Rectangle) {
     return shape.width * shape.height;
@@ -421,10 +436,11 @@ subtract = add; // ✅ OK
 
 ### 2-2-4. 자바스크립트를 닮은 타입스크립트
 
-1. **타입스크립트의 구조적 타이핑**: 
+
+1. **타입스크립트의 구조적 타이핑**:
    - 타입스크립트는 객체나 함수의 **구조**를 기반으로 타입을 검사합니다. 이는 자바스크립트의 동작(덕 타이핑)을 모델링한 결과입니다.
    - 타입스크립트는 자바스크립트의 덕 타이핑 개념을 모델링하면서도 정적 타이핑의 장점을 제공합니다.
-2. **덕 타이핑**: "어떤 값이 올바르게 동작한다면, 그 값이 어떻게 만들어졌는지는 중요하지 않다"는 개념으로, 런타임에 타입을 검사합니다.
+2. **덕 타이핑**: **"만약 어떤 객체가 특정 구조를 가진다면, 그것은 그 타입으로 간주될 수 있다**"는 개념으로, 런타임에 타입을 검사합니다.
 3. **구조적 타이핑 vs 덕 타이핑**:
    - **구조적 타이핑**: 컴파일 타임에 타입을 검사 (정적 타이핑).
    - **덕 타이핑**: 런타임에 타입을 검사 (동적 타이핑).
@@ -480,7 +496,11 @@ printName(anotherPerson); // 출력: Bob
 
 <br>
 
-### 2-2-5. 구조적 타이핑의 예상치 못한 결과
+### 2-2-5. **구조적 타이핑의 예상치 못한 결과**
+
+```bash
+# TODO: 구조적 타이핑의 예상치 못한 결과
+```
 
 - 구조적 타이핑은 객체의 형태(구조)에 따라 타입을 판단하는 방식으로, 추가 속성이 있는 객체도 허용될 수 있습니다. 이로 인해 타입 안정성이 떨어질 수 있는 상황이 발생할 수 있습니다.
 
@@ -545,17 +565,280 @@ addLines(namedCube); // 🚨 타입 에러 (추가 속성 허용 안 됨)
 
 ### 2-2-6. 타입스크립트의 점진적 타입 확인
 
+
+1. **타입스크립트는 점진적 타입 확인을 지원**:
+   - 타입스크립트는 컴파일 타임에 타입을 검사하지만, 필요에 따라 타입 선언을 생략할 수 있습니다.
+   
+2. **점진적 타입 검사란**:
+   - 타입을 지정한 변수와 표현식은 **정적으로 타입을 검사**합니다.
+   - 타입 선언이 생략되면 **동적으로 타입을 검사**합니다.
+
+3. **암묵적 타입 변환**:
+   - 타입 선언을 생략하면 암묵적으로 `any` 타입이 할당됩니다.
+   ```ts
+   // 타입 선언 생략 시 발생 가능한 문제 관련 에제
+   function add(x, y) {
+     return x + y;
+   }
+   // 위 코드는 아래와 같이 해석됩니다.
+   function add(x: any, y: any): any
+   // `x`와 `y`의 타입을 명시하지 않으면, 암묵적으로 `any` 타입이 할당됩니다.
+   // 이로 인해 런타임에서 의도하지 않은 동작이 발생할 수 있습니다.
+   ```
+
+4. **점진적 타입 추가**:
+   - 타입스크립트는 기존 자바스크립트 코드에 점진적으로 타입을 추가하는 방식으로 마이그레이션할 수 있습니다.
+   - 하지만 모든 타입을 명시적으로 지정했을 때 최상의 결과를 제공합니다.
+
+5. **정적 타입의 한계**:
+   - 타입스크립트의 점진적 타입 시스템은 **정적 타입의 정확성을 100% 보장하지 않습니다**.
+   - 모든 변수와 표현식의 타입을 컴파일 타임에 검사하지 않기 때문에, 런타임 에러가 발생할 수 있습니다.
+        ```ts
+        const names = ["zig", "colin"];
+        console.log(names[2].toUpperCase()); 
+        // 🚨 TypeError:
+        // `names[2]` 는 배열의 범위를 벗어난 인덱스를 참조하므로, `undefined` 를 반환합니다.
+        // `names[2]` 는 `undefined` 이기 때문에, 
+        // `toUpperCase()` 를 호출하려고 하면 런타임 에러(TypeError)가 발생합니다.
+        ```
+    - 이러한 타입 에러를 해결하는 방법에는 2가지가 있습니다.
+        ```ts
+        const names = ["zig", "colin"];
+        // 배열의 특정 인덱스를 참조하기 전에 해당 인덱스가 유효한지 확인합니다.
+        if (names[2] !== undefined) {
+          console.log(names[2].toUpperCase());
+        } else {
+          console.log("해당 인덱스는 존재하지 않습니다.");
+        }
+        ```
+        또는
+        ```ts
+        const names = ["zig", "colin"];
+        // 배열의 길이를 확인하여 유효한 범위 내에서만 접근하도록 처리할 수 있습니다.
+        if (names.length > 2) {
+          console.log(names[2].toUpperCase());
+        } else {
+          console.log("배열의 길이를 초과하는 인덱스입니다.");
+        }
+        ```
+
 <br>
 
 ### 2-2-7. 자바스크립트 슈퍼셋으로서의 타입스크립트
 
+
+- 타입스크립트는 기존 자바스크립트에 정적 타이핑을 추가한 것으로 자바스크립트의 상위 집합이다.  
+- 모든 자바스크립트 코드는 타입스크립트 파일에서 유효하지만, 타입스크립트는 타입 구문과 같은 추가 기능을 포함하므로 모든 타입스크립트 코드를 자바스크립트로 바로 실행할 수는 없습니다. 타입스크립트 코드는 컴파일 과정을 거쳐야 합니다.
+- 자바스크립트 코드에 타입 구문을 추가하면 해당 코드는 타입스크립트로 간주됩니다.  
+- 타입스크립트 컴파일러(tsc)는 자바스크립트 파일도 처리할 수 있으며, 이를 통해 코드 검증 및 변환 작업을 수행할 수 있습니다.
+
+```js
+// 자바스크립트 코드 (유효한 타입스크립트 코드)
+function add(a, b) {
+  return a + b;
+}
+```
+
+```ts
+function add(a: number, b: number): number { // `a: number`와 `b: number`는 타입스크립트의 타입 구문입니다.   이로 인해 해당 코드는 타입스크립트로 분류됩니다.
+  return a + b;
+}
+```
 <br>
 
 ### 2-2-8. 값 vs 타입
 
+
+1. **값의 정의**  
+   - 값은 프로그램이 처리하기 위해 메모리에 저장되는 모든 데이터로, 프로그램에서 조작 가능한 표현이다.  
+   - 자바스크립트에서 함수도 값이며, 객체로 변환된다.
+
+2. **타입스크립트와 타입**  
+   - 타입스크립트는 타입을 명시할 수 있는 기능을 제공하며, `:type` 형태로 변수, 매개변수, 객체 속성 등에 타입을 지정하거나 `type` 또는 `interface`로 커스텀 타입을 정의할 수 있다.  
+   - 값 공간과 타입 공간의 이름은 충돌하지 않는다. 이는 타입스크립트가 자바스크립트의 슈퍼셋이기 때문이다.
+
+3. **타입스크립트 문법과 런타임**  
+   - 타입스크립트의 타입 선언은 컴파일 시 제거되므로 런타임에는 값 공간과 타입 공간이 충돌하지 않는다.  
+   - 타입은 `:` 또는 `as`로 선언하며, 값은 `=`으로 할당한다.
+
+4. **값과 타입 공간에 동시에 존재하는 심볼**  
+   - 클래스와 `enum`은 값과 타입 공간 모두에 존재한다.  
+   - 클래스는 런타임에 객체로 변환되며, 타입으로도 사용 가능하다.  
+   - `enum`은 런타임에 실제 객체로 변환되며, 값과 타입을 모두 제공한다.
+
+### 예제 코드 설명
+
+#### 1. **타입 명시**
+```ts
+function email({
+  person,
+  subject,
+  body,
+}: {
+  person: Person;
+  subject: string;
+  body: string;
+}) {
+  // ...
+}
+```
+- `person`, `subject`, `body`의 타입을 명시적으로 지정.  
+- 런타임에서는 타입 정보가 제거되고 순수 자바스크립트 코드만 남는다.
+
+#### 2. **클래스의 이중 역할**
+```ts
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+
+const rect1 = new Rectangle(5, 4);
+```
+- `Rectangle`은 타입으로 사용 가능하며, 런타임에는 객체로 변환되어 값으로도 사용된다.
+
+
+#### 3. **Enum의 이중 역할**
+```ts
+enum Direction {
+  Up, // 0
+  Down, // 1
+  Left, // 2
+  Right, // 3
+}
+```
+- `Direction`은 타입으로 사용 가능하며, 런타임에는 객체로 변환된다.  
+- 변환된 자바스크립트 코드:
+```js
+let Direction;
+(function (Direction) {
+  Direction[(Direction.Up = 0)] = "Up";
+  Direction[(Direction.Down = 1)] = "Down";
+  Direction[(Direction.Left = 2)] = "Left";
+  Direction[(Direction.Right = 3)] = "Right";
+}(Direction || (Direction = {})));
+```
+
+#### 4. **Enum의 값 공간 활용**
+```ts
+enum MyColors {
+  BLUE = "#0000FF",
+  YELLOW = "#FFFF00",
+  MINT = "#2AC1BC",
+}
+
+function whatMintColor(palette: { MINT: string }) {
+  return palette.MINT;
+}
+
+whatMintColor(MyColors); // ✅
+```
+- `MyColors`는 값으로 사용되며, 런타임에 실제 객체로 존재한다.
+
+
+### 추가 예제: 클래스와 Enum의 이중 역할
+
+#### 클래스
+```ts
+class Animal {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+const dog = new Animal("Dog"); // 값으로 사용
+type AnimalType = Animal; // 타입으로 사용
+```
+
+#### Enum
+```ts
+enum Status {
+  Active = "ACTIVE",
+  Inactive = "INACTIVE",
+}
+
+function checkStatus(status: Status) {
+  if (status === Status.Active) {
+    console.log("Status is active.");
+  }
+}
+
+checkStatus(Status.Active); // 값으로 사용
+type StatusType = Status; // 타입으로 사용
+```
+
 <br>
 
 ### 2-2-9. 타입을 확인하는 방법
+
+
+1. **타입 확인 방법**
+   - `typeof`, `instanceof`, 타입 단언, 타입 가드를 사용하여 타입을 확인할 수 있다.
+
+2. **값 공간과 타입 공간**
+   - 타입스크립트에는 **값 공간**과 **타입 공간**이 별도로 존재한다.
+   - `typeof` 연산자는 값 공간과 타입 공간에서 다르게 동작한다.
+
+3. **typeof 연산자**
+   - 값 공간에서:
+     ```ts
+     const v1 = typeof person; // 값은 'object'
+     const v2 = typeof email; // 값은 'function'
+     ```
+   - 타입 공간에서:
+     ```ts
+     type T1 = typeof person; // 타입은 Person
+     type T2 = typeof email; // 타입은 (options: { person: Person; subject: string; body: string }) => void
+     ```
+
+4. **자바스크립트 클래스와 typeof**
+   - 자바스크립트 클래스는 값 공간에서 `typeof`를 사용하면 `'function'`으로 평가된다.
+   - 타입 공간에서 `typeof`를 사용하면 생성자 함수의 타입을 반환한다.
+     ```ts
+     class Developer {
+       name: string;
+       sleepingTime: number;
+       constructor(name: string, sleepingTime: number) {
+         this.name = name;
+         this.sleepingTime = sleepingTime;
+       }
+     }
+     const d = typeof Developer; // 값이 'function'
+     type T = typeof Developer; // 타입이 typeof Developer
+     const zig: Developer = new Developer("zig", 7);
+     type ZigType = typeof zig; // 타입이 Developer
+     ```
+
+5. **instanceof 연산자**
+   - 자바스크립트에서 `instanceof`는 프로토타입 체이닝을 통해 생성자의 프로토타입 속성이 존재하는지 확인한다.
+     ```ts
+     let error: unknown;
+     if (error instanceof Error) {
+       showAlertModal(error.message);
+     } else {
+       throw Error(error);
+     }
+     ```
+
+6. **타입 단언 (Type Assertion)**
+   - `as` 키워드를 사용하여 타입을 강제할 수 있다.
+      ```ts
+      const input: unknown = "TypeScript";
+
+      const length = (input as string).length; // 타입 단언으로 string으로 강제
+      console.log(length); // 10
+      ```
+   - 개발자가 해당 값의 타입을 더 잘 알고 있을 때 사용하며, 강제 형변환과 유사하다.
+     ```ts
+     const loaded_text: unknown; // 어딘가에서 unknown 타입 값을 전달받았다고 가정
+     const validateInputText = (text: string) => {
+       if (text.length < 10) return "최소 10글자 이상 입력해야 합니다.";
+       return "정상 입력된 값입니다.";
+     };
+     validateInputText(loaded_text as string); // as 키워드를 사용하지 않으면 컴파일 에러 발생
+     ```
 
 <br>
 
@@ -611,4 +894,86 @@ addLines(namedCube); // 🚨 타입 에러 (추가 속성 허용 안 됨)
 
 ### 2-4-5. `function`
 
+
 <br>
+
+## 더 나아가서
+
+### **선택적 속성과 구조적 타이핑**
+
+```ts
+interface UserProfile {
+  name: string;
+  age?: number; // 선택적 속성
+}
+
+const UserCard: React.FC<UserProfile> = ({ name, age }) => {
+  return (
+    <div>
+      <h1>{name}</h1>
+      {age && <p>Age: {age}</p>}
+    </div>
+  );
+};
+
+const App = () => {
+  return <UserCard name="Alice" />;
+};
+```
+
+### **컴포넌트 Props 검증**
+
+React 컴포넌트의 Props를 정의할 때 구조적 타이핑을 활용하면, Props의 형태만 맞으면 타입이 자동으로 호환됩니다.
+
+```ts
+interface ButtonProps {
+  label: string;
+  onClick: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ label, onClick }) => {
+  return <button onClick={onClick}>{label}</button>;
+};
+
+// 구조적 타이핑을 활용한 Props 전달
+const App = () => {
+  const handleClick = () => alert("Button clicked!");
+
+  const buttonProps = { label: "Click Me", onClick: handleClick }; 
+  return <Button {...buttonProps} />; // ✅ OK - 구조적으로 동일한 객체를 전달하면 타입이 호환됨
+};
+```
+
+
+### **HOC(Higher-Order Component)와의 통합**
+
+HOC를 작성할 때 구조적 타이핑을 사용하면, 원래 컴포넌트의 Props를 유지하면서 추가적인 Props를 확장할 수 있습니다.
+
+```ts
+type WithLoadingProps = {
+  isLoading: boolean;
+};
+
+function withLoading<P>(Component: React.ComponentType<P>) {
+  return (props: P & WithLoadingProps) => {
+    if (props.isLoading) return <div>로딩 중...</div>;
+    return <Component {...props} />;
+  };
+}
+```
+
+### **제네릭(Generic)과의 조합**
+
+```ts
+type ListProps<T> = {
+  items: T[];
+  renderItem: (item: T) => React.ReactNode;
+};
+
+function List<T>({ items, renderItem }: ListProps<T>) {
+  return <ul>{items.map(renderItem)}</ul>;
+}
+
+// 사용 예시
+<List items={[1, 2, 3]} renderItem={(item) => <li key={item}>{item}</li>} />;
+```
