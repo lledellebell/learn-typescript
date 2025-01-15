@@ -1,8 +1,8 @@
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fdiving-typescript%2Fwoowahan-typescript-with-react&count_bg=%236A3DC8&title_bg=%23C3BED3&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
-# 🚀 우아한 타입스크립트 with 리액트 스터디  
-**"타입스크립트와 리액트를 제대로 배우고, 알고리즘 실력까지 키워보자!"**  
+
+# 🚀 우아한 타입스크립트 with 리액트 스터디    
 
 <p align="center">
   <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791169211567.jpg" alt="우아한 타입스크립트 with 리액트 책 표지" width="240" height="auto" />
@@ -10,7 +10,7 @@
 
 <br>
 
-## 🎯 스터디 목표  
+## 🎯 스터디 목표   
 - **타입스크립트와 리액트**의 핵심 개념을 학습하고 실무에 적용할 수 있는 능력 배양  
 - **알고리즘 문제 풀이**를 통해 문제 해결 능력과 코딩 실력 향상  
 
