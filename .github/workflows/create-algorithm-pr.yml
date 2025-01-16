@@ -74,7 +74,7 @@ jobs:
             const spaceComplexity = '${{ github.event.inputs.spaceComplexity }}';
             const feedbackRequest = '${{ github.event.inputs.feedbackRequest || "없음" }}';
             const additionalQuestions = '${{ github.event.inputs.additionalQuestions || "없음" }}';
-
+            const problemLink = `${{ github.event.inputs.problemLink }}`;
             const prBody = `
 📝 **문제 설명**
 문제 링크: [${problemLink}](${problemLink})
