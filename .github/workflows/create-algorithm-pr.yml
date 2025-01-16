@@ -74,28 +74,27 @@ jobs:
             const spaceComplexity = '${{ github.event.inputs.spaceComplexity }}';
             const feedbackRequest = '${{ github.event.inputs.feedbackRequest || "없음" }}';
             const additionalQuestions = '${{ github.event.inputs.additionalQuestions || "없음" }}';
-            const problemLink = `${{ github.event.inputs.problemLink }}`;
             const prBody = `
-📝 **문제 설명**
-문제 링크: [${problemLink}](${problemLink})
-
-💡 **풀이 방법**
-${solutionApproach}
-
-🧑‍💻 **코드 (${language})**
-\`\`\`${language}
-${code}
-\`\`\`
-
-📊 **시간 및 공간 복잡도**
-- 시간 복잡도: ${timeComplexity}
-- 공간 복잡도: ${spaceComplexity}
-
-🙋‍♂️ **요청 사항**
-${feedbackRequest}
-
-🤔 **추가 질문**
-${additionalQuestions}
+              📝 **문제 설명**
+              문제 링크: [${problemLink}](${problemLink})
+              
+              💡 **풀이 방법**
+              ${solutionApproach}
+              
+              🧑‍💻 **코드 (${language})**
+              \`\`\`${language}
+              ${code}
+              \`\`\`
+              
+              📊 **시간 및 공간 복잡도**
+              - 시간 복잡도: ${timeComplexity}
+              - 공간 복잡도: ${spaceComplexity}
+              
+              🙋‍♂️ **요청 사항**
+              ${feedbackRequest}
+              
+              🤔 **추가 질문**
+              ${additionalQuestions}
             `;
 
             const branchName = `dependabot/algorithm${Date.now()}`;
