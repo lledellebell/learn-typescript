@@ -108,7 +108,7 @@ jobs:
             });
 
             // 브랜치에 새로운 파일 생성
-            const filePath = `algorithm/**/${problemTitle.replace(/ /g, '_')}.${language === 'typescript' ? 'ts' : 'js'}`;
+            const filePath = `algorithms/**/${problemTitle.replace(/ /g, '_')}.${language === 'typescript' ? 'ts' : 'js'}`;
             const fileContent = Buffer.from(prBody).toString('base64');
 
             await github.rest.repos.createOrUpdateFileContents({
