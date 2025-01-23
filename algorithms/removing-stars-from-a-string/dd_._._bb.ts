@@ -1,3 +1,4 @@
+
 function removeStars(s: string): string {
   const result: string[] = [];
   const splits = s.split('');
