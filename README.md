@@ -23,17 +23,17 @@
 | ✅ | 1주차  | 1월 8일   | 1장 들어가며                                  |  |
 | ✅ | 2주차  | 1월 15일  | 2장 타입 (2-1, 2-2)                           | [Two Sum](https://github.com/diving-typescript/woowahan-typescript-with-react/tree/master/algorithms/two-sum) |
 | ✅ | 3주차  | 1월 22일  | 2장 타입 (2-3, 2-4)                           | [Removing Stars From A Strin](https://github.com/diving-typescript/woowahan-typescript-with-react/tree/master/algorithms/removing-stars-from-a-string) |
-|   | 4주차  | 1월 29일  | 3장 고급 타입         | [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)]  |
-|   | 5주차  | 2월 5일   | 4장 타입 확장하기·좁히기                             | |
-|   | 5주차  | 2월 12일   | 5장 타입 활용하기                             | |
-|   | 6주차  | 2월 19일  | 6장 타입스크립트 컴파일                       |  |
-|   | 7주차  | 2월 26일  | 7장 비동기 호출                               |  |
-|   | 8주차  | 3월 4일  | 8장 JSX에서 TSX로                             |  |
-|   | 9주차  | 3월 11일   | 9장 훅                                       |  |
-|   | 10주차 | 3월 18일  | 10장 상태 관리                                | |
-|   | 11주차 | 3월 25일  | 11장 CSS-in-JS                                |  |
-|   | 12주차 | 4월 1일  | 12장 타입스크립트 프로젝트 관리               |  |
-|   | 13주차 | 4월 8일   | 13장 타입스크립트와 객체 지향                 | |
+|   | 4주차  | 2월 5일  | 3장 고급 타입         | [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)]  |
+|   | 5주차  | 2월 12일   | 4장 타입 확장하기·좁히기                             | |
+|   | 5주차  | 2월 19일   | 5장 타입 활용하기                             | |
+|   | 6주차  | 2월 26일  | 6장 타입스크립트 컴파일                       |  |
+|   | 7주차  | 3월 4일  | 7장 비동기 호출                               |  |
+|   | 8주차  | 3월 11일  | 8장 JSX에서 TSX로                             |  |
+|   | 9주차  | 3월 18일   | 9장 훅                                       |  |
+|   | 10주차 | 3월 25일  | 10장 상태 관리                                | |
+|   | 11주차 | 4월 1일  | 11장 CSS-in-JS                                |  |
+|   | 12주차 | 4월 8일  | 12장 타입스크립트 프로젝트 관리               |  |
+|   | 13주차 | 4월 15일   | 13장 타입스크립트와 객체 지향                 | |
 
 <br>
 
