@@ -229,6 +229,167 @@ const notice4: NoticePopupType = notice2; // OK
 
 여기서 질문 type과 interface 를 어떤 기준으로 나뉘어서 사용하는 지 질문하기
 
+# Type과 Interface: 사용 기준 및 상세 설명
+
+`type`과 `interface`는 타입스크립트에서 객체, 함수, 배열 등 다양한 타입을 정의할 때 사용하는 주요 도구입니다.  
+두 가지 모두 유사한 방식으로 타입을 정의할 수 있지만, **사용 목적**과 **특화된 기능**이 다릅니다.
+
+---
+
+## 1. 객체 타입 정의는 `interface`가 더 적합한 이유
+
+### 1-1. 확장성 (`extends`)
+
+`interface`는 **확장(extends)**이 가능하여 객체의 구조를 계층적으로 정의하고, 재사용성을 높일 수 있습니다.  
+또한, 동일 이름의 `interface`가 자동으로 병합되기 때문에 여러 모듈에서 확장하여 사용할 수 있습니다.
+
+#### 예제: 객체 구조 정의 및 확장
+
+```typescript
+interface User {
+  name: string;
+  age: number;
+}
+
+interface Admin extends User {
+  role: string; // 추가 속성
+}
+
+const admin: Admin = {
+  name: 'Alice',
+  age: 30,
+  role: 'superadmin',
+};
+```
+
+### 1-2. 병합 가능성
+
+interface는 동일한 이름으로 정의된 구조를 병합할 수 있습니다.
+이를 통해 라이브러리 확장이나 전역적으로 타입을 추가하는 데 유용합니다.
+
+```
+예제: 병합
+typescript
+복사
+편집
+// 같은 이름의 인터페이스가 병합됨
+interface User {
+  name: string;
+}
+
+interface User {
+  age: number;
+}
+
+const user: User = {
+  name: "Alice",
+  age: 25,
+}; // OK
+활용 사례: 전역 객체(Window, Document 등)의 속성을 확장하거나 외부 라이브러리를 확장할 때 유용합니다.
+```
+
+### 1-3. 클래스와의 연동
+
+interface는 클래스에서 구현(implements) 가능하여, 특정 구조를 강제하는 데 적합합니다.
+
+```
+예제: 클래스 구현
+typescript
+복사
+편집
+interface IUser {
+  name: string;
+  login(): void;
+}
+
+class User implements IUser {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  login() {
+    console.log(`${this.name} has logged in.`);
+  }
+}
+```
+
+### 2. 복잡한 타입 정의는 type이 더 적합한 이유
+
+2-1. 유니온 타입 (Union Type)
+type은 유니온 타입을 정의할 수 있어, 여러 값의 조합을 간단히 표현할 수 있습니다.
+
+```
+예제: 유니온 타입
+typescript
+복사
+편집
+type Status = "active" | "inactive" | "suspended";
+
+const userStatus: Status = "active"; // OK
+const invalidStatus: Status = "unknown"; // Error
+2-2. 튜플 타입
+type은 배열과 유사한 구조의 튜플 타입을 정의하는 데 적합합니다.
+튜플은 고정된 길이와 타입 순서를 가지며, interface로는 정의할 수 없습니다.
+
+예제: 튜플 타입
+typescript
+복사
+편집
+type Point = [number, number]; // x, y 좌표
+
+const coordinates: Point = [10, 20]; // OK
+const invalidPoint: Point = [10, "20"]; // Error
+2-3. 함수 타입
+type은 함수의 호출 시그니처를 정의하는 데 유용합니다.
+
+예제: 함수 타입 정의
+typescript
+복사
+편집
+type Add = (a: number, b: number) => number;
+
+const add: Add = (x, y) => x + y; // OK
+장점: 함수 타입을 명확히 정의하고, 매개변수와 반환값의 타입을 한눈에 파악할 수 있습니다.
+```
+
+### 2-4. 복잡한 조합 타입
+
+type은 유니온(|), 인터섹션(&), 조건부 타입 등 복잡한 조합을 표현하는 데 적합합니다.
+
+```
+예제: 인터섹션 타입
+typescript
+복사
+편집
+type Name = { name: string };
+type Age = { age: number };
+
+type Person = Name & Age;
+
+const person: Person = { name: "Alice", age: 25 }; // OK
+예제: 조건부 타입
+typescript
+복사
+편집
+type IsString<T> = T extends string ? "yes" : "no";
+
+type Test1 = IsString<string>; // "yes"
+type Test2 = IsString<number>; // "no"
+```
+
+### 3. 결론: 언제 type과 interface를 사용해야 할까?
+
+| 상황                             | 사용      | 추천이유                                           |
+| -------------------------------- | --------- | -------------------------------------------------- |
+| 객체의 구조 정의                 | interface | 확장성과 병합 가능성 덕분에 더 유연함.             |
+| 클래스에서 특정 구조 구현 강제   | interface | 클래스와의 연동성(implements)이 뛰어남.            |
+| 유니온, 인터섹션 타입 정의       | type      | 복잡한 타입 조합을 간단히 표현 가능.               |
+| 함수 호출 시그니처 정의          | type      | 함수의 매개변수와 반환값을 명확히 표현 가능.       |
+| 튜플, 조건부 타입 등 고정된 구조 | type      | interface로는 표현 불가능한 정밀한 구조 정의 가능. |
+| 외부 라이브러리 확장             | interface | 동일 이름 병합 기능을 통해 전역적으로 확장 가능.   |
+
 ### function
 
 타입스크립트에서 별도 함수 타입으로 지정
@@ -264,5 +425,4 @@ interface Multiply {
 const multiply: Multiply = (a, b) => a * b;
 
 console.log(multiply(2, 4)); // 8
-
 ```
