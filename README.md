@@ -27,7 +27,7 @@
 | ✅ | 5주차  |  4장 타입 확장하기·좁히기                             | [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) |
 |   | 6주차  | 5장 타입 활용하기                             | |
 |   | 7주차  | 6장 타입스크립트 컴파일                       |  |
-|   | 8주차  | 7장 비동기 호출                               |  |
+|   | 8주차  | 7장 비동기 호출                               | https://leetcode.com/problems/string-compression/description/?envType=study-plan-v2&envId=leetcode-75 |
 |   | 9주차  | 8장 JSX에서 TSX로                             |  |
 |   | 10주차 | 9장 훅                                       |  |
 |   | 11주차 | 10장 상태 관리                                | |
