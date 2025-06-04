@@ -1,7 +1,4 @@
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fdiving-typescript%2Fwoowahan-typescript-with-react&count_bg=%236A3DC8&title_bg=%23C3BED3&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-
-
 # 🚀 우아한 타입스크립트 with 리액트 스터디    
 
 <p align="center">
@@ -25,10 +22,10 @@
 | ✅ | 3주차  |  2장 타입 (2-3, 2-4)                           | [Removing Stars From A Strin](https://github.com/diving-typescript/woowahan-typescript-with-react/tree/master/algorithms/removing-stars-from-a-string) |
 | ✅ | 4주차  | 3장 고급 타입         | [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)  |
 | ✅ | 5주차  |  4장 타입 확장하기·좁히기                             | [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) |
-|   | 6주차  | 5장 타입 활용하기                             | |
-|   | 7주차  | 6장 타입스크립트 컴파일                       |  |
-|   | 8주차  | 7장 비동기 호출                               |  |
-|   | 9주차  | 8장 JSX에서 TSX로                             |  |
+| ✅ | 6주차  | 5장 타입 활용하기                             | |
+| ✅ | 7주차  | 6장 타입스크립트 컴파일                       |  |
+| ✅ | 8주차  | 7장 비동기 호출                               | [String Compression](https://leetcode.com/problems/string-compression?envType=study-plan-v2&envId=leetcode-75) |
+| ✅ | 9주차  | 8장 JSX에서 TSX로                             |  |
 |   | 10주차 | 9장 훅                                       |  |
 |   | 11주차 | 10장 상태 관리                                | |
 |   | 12주차 | 11장 CSS-in-JS                                |  |
@@ -62,12 +59,12 @@
 |-------|--------------|---------------|-------------|
 | 2주차 | ✅            | ✅             | ✅           |
 | 3주차 | ✅            | ✅             | ✅           |
-| 4주차 |           |              |               |
-| 5주차 |           |              |               |
-| 6주차 |           |              |               |
-| 7주차 |           |              |               |
-| 8주차 |           |              |               |
-| 9주차 |           |              |               |
+| 4주차 | ✅        | ✅           | ✅           |
+| 5주차 | ✅        |  ✅        |            |
+| 6주차 | ✅        |            | ✅            |
+| 7주차 |           |  ✅          | ✅            |
+| 8주차 |  ✅        | ✅          | ✅           |
+| 9주차 |  ✅        |              | ✅             |
 | 10주차|           |              |               |
 | 11주차|           |              |               |
 | 12주차|           |              |               |
