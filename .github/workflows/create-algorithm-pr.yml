@@ -50,7 +50,7 @@ jobs:
           if [ "${{ github.event.inputs.language }}" == "typescript" ]; then
             npx tsc --noEmit solution.ts
           else
-            node -c solution.js
+            node --check solution.js
           fi
         shell: bash
       - name: Check Syntax Result
@@ -73,7 +73,7 @@ jobs:
             const timeComplexity = '${{ github.event.inputs.timeComplexity }}';
             const spaceComplexity = '${{ github.event.inputs.spaceComplexity }}';
             const feedbackRequest = '${{ github.event.inputs.feedbackRequest || '없음' }}';
-            const additionalQuestions = '${{ github.event.inputs.additionalQuestions || "없음" }}';
+            const additionalQuestions = '${{ github.event.inputs.additionalQuestions || \'\uc5c6\uc74c\' }}';
             const prBody = `
               📝 **문제 설명**
               문제 링크: [${problemLink}](${problemLink})
@@ -108,7 +108,7 @@ jobs:
             });
 
             // 브랜치에 새로운 파일 생성
-            const filePath = `algorithms/**/${problemTitle.replace(/ /g, '_')}.${language === 'typescript' ? 'ts' : 'js'}`;
+            const filePath = `algorithms/${problemTitle.replace(/ /g, '_')}.${language == 'typescript' ? 'ts' : 'js'}`;
             const fileContent = Buffer.from(prBody).toString('base64');
 
             await github.rest.repos.createOrUpdateFileContents({
