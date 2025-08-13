@@ -46,7 +46,7 @@ jobs:
       - name: Validate Code Syntax
         id: validate-code
         run: |
-          echo "${{ github.event.inputs.code }}" > solution.${{ github.event.inputs.language === 'typescript' && 'ts' || 'js' }}
+          echo "${{ github.event.inputs.code }}" > solution.${{ github.event.inputs.language == 'typescript' && 'ts' || 'js' }}
           if [ "${{ github.event.inputs.language }}" == "typescript" ]; then
             npx tsc --noEmit solution.ts
           else
@@ -72,7 +72,7 @@ jobs:
             const language = '${{ github.event.inputs.language }}';
             const timeComplexity = '${{ github.event.inputs.timeComplexity }}';
             const spaceComplexity = '${{ github.event.inputs.spaceComplexity }}';
-            const feedbackRequest = '${{ github.event.inputs.feedbackRequest || "없음" }}';
+            const feedbackRequest = '${{ github.event.inputs.feedbackRequest || '없음' }}';
             const additionalQuestions = '${{ github.event.inputs.additionalQuestions || "없음" }}';
             const prBody = `
               📝 **문제 설명**
